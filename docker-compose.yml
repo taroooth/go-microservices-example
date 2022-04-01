@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  db:
+    build:
+      context: db
+      dockerfile: ./Dockerfile
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - /var/lib/mysql
+    ports:
+      - 3306:3306
+    hostname: db
+
+  app:
+    build:
+      context: app
+      dockerfile: ./Dockerfile
+    tty: true
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8888:8888
+    depends_on:
+      - db
