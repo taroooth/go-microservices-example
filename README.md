@@ -1,7 +1,7 @@
 # gRPCサーバー起動確認
 
 ```
-$ go run cmd/user/main.go
+$ docker-compose up
 
 $ grpc_cli ls localhost:50051 user.UserService
 Create

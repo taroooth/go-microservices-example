@@ -9,20 +9,20 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
+      - ./db/sql:/docker-entrypoint-initdb.d
       - /var/lib/mysql
     ports:
       - 3306:3306
     hostname: db
 
-  app:
+  user-service:
     build:
-      context: app
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: ./app/services/user/Dockerfile
     tty: true
     volumes:
       - .:/go/src/app
     ports:
-      - 8888:8888
+      - 50051:50051
     depends_on:
       - db

@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/taroooth/order/app/pb"
-	"github.com/taroooth/order/app/service/user"
+	g "github.com/taroooth/order/app/services/user/grpc"
+	"github.com/taroooth/order/app/services/user/pb"
 )
 
 func main() {
@@ -19,10 +19,10 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	server := grpc.NewServer()
-	pb.RegisterUserServiceServer(server, user.NewUserService())
+	s := grpc.NewServer()
+	pb.RegisterUserServiceServer(s, g.NewUserService())
 
-	reflection.Register(server)
+	reflection.Register(s)
 
-	server.Serve(listenPort)
+	s.Serve(listenPort)
 }

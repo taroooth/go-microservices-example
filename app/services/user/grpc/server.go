@@ -1,9 +1,9 @@
-package user
+package grpc
 
 import (
 	"context"
 
-	"github.com/taroooth/order/app/pb"
+	"github.com/taroooth/order/app/services/user/pb"
 )
 
 type server struct {
