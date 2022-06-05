@@ -1,4 +1,4 @@
-use order_development;
+use book_app;
 
 create table if not exists authors
 (

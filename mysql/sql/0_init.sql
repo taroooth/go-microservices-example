@@ -1,3 +1,3 @@
-create database if not exists order_development;
+create database if not exists book_app;
 
-use order_development;
+use book_app;
