@@ -10,3 +10,7 @@ create table if not exists books
     REFERENCES authors (id)
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
+
+insert into `books` (`title`, `author_id`) VALUES ('The Art of Readable Code', 1);
+insert into `books` (`title`, `author_id`) VALUES ('現場で役立つシステム設計の原則', 2);
+insert into `books` (`title`, `author_id`) VALUES ('達人に学ぶDB設計 徹底指南書', 3);
