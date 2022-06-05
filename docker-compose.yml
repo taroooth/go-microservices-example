@@ -4,13 +4,13 @@ services:
   db:
     container_name: db
     build:
-      context: mysql
+      context: db
       dockerfile: ./Dockerfile
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - ./mysql/db-data:/var/lib/mysql
-      - ./mysql/sql:/docker-entrypoint-initdb.d
+      - ./db/data:/var/lib/mysql
+      - ./db/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     hostname: db
@@ -29,4 +29,4 @@ services:
       - db
 
 volumes:
-  db-data:
+  data:
