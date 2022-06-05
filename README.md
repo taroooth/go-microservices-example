@@ -1,4 +1,6 @@
-# gRPCサーバー起動確認
+# gRPC
+
+## サーバー起動確認
 
 ```
 $ docker-compose build
@@ -7,6 +9,14 @@ $ docker-compose up
 $ grpc_cli ls localhost:50051 user.UserService
 Create
 Get
+
+$ grpc_cli ls localhost:50052 book.BookService
+GetBooks
+```
+
+## 自動生成
+```
+$ protoc --go_out=. --go-grpc_out=require_unimplemented_servers=false:. ./services/book/proto/book.proto
 ```
 
 # 動作確認

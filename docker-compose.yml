@@ -27,6 +27,18 @@ services:
       - 50051:50051
     depends_on:
       - db
+  book-service:
+    container_name: book-service
+    build:
+      context: .
+      dockerfile: ./services/book/Dockerfile
+    tty: true
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 50052:50052
+    depends_on:
+      - db
 
 volumes:
   db-data:
