@@ -2,20 +2,21 @@ version: "3.8"
 
 services:
   db:
+    container_name: db
     build:
-      context: db
+      context: mysql
       dockerfile: ./Dockerfile
-    image: mysql:5.7
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - ./db/sql:/docker-entrypoint-initdb.d
-      - /var/lib/mysql
+      - ./mysql/db-data:/var/lib/mysql
+      - ./mysql/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     hostname: db
 
   user-service:
+    container_name: user-service
     build:
       context: .
       dockerfile: ./app/services/user/Dockerfile
@@ -26,3 +27,6 @@ services:
       - 50051:50051
     depends_on:
       - db
+
+volumes:
+  db-data:
