@@ -15,18 +15,6 @@ services:
       - 3306:3306
     hostname: db
 
-  user-service:
-    container_name: user-service
-    build:
-      context: .
-      dockerfile: ./app/services/user/Dockerfile
-    tty: true
-    volumes:
-      - .:/go/src/app
-    ports:
-      - 50051:50051
-    depends_on:
-      - db
   book-service:
     container_name: book-service
     build:

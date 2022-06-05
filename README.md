@@ -6,10 +6,6 @@
 $ docker-compose build
 $ docker-compose up
 
-$ grpc_cli ls localhost:50051 user.UserService
-Create
-Get
-
 $ grpc_cli ls localhost:50052 book.BookService
 GetBooks
 ```
@@ -32,5 +28,5 @@ $ docker exec -it db /bin/sh
 
 # mysql
 
-> use order_development;
+> use book_app;
 ```
