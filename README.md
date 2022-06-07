@@ -18,7 +18,7 @@ $ protoc --go_out=. --go-grpc_out=require_unimplemented_servers=false:. ./servic
 # 動作確認
 
 ```
-$ grpc_cli call localhost:50051 user.UserService.Create 'name: "name", email: "user@example.com", password: "password"'
+$ grpc_cli call localhost:50052 book.BookService.GetBooks
 ```
 
 # MySQL
