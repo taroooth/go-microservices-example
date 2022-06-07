@@ -36,13 +36,3 @@ func (s *server) GetBooks(ctx context.Context, req *proto.GetBooksRequest) (*pro
 
 	return res, nil
 }
-
-func (s *server) GetBook(ctx context.Context, req *proto.GetBookRequest) (*proto.GetBookResponse, error) {
-	return &proto.GetBookResponse{
-		Book: &proto.Book{
-			Id:       2,
-			AuthorId: 2,
-			Title:    "Title2",
-		},
-	}, nil
-}
