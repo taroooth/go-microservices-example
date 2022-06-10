@@ -1,15 +1,16 @@
 package model
 
 import (
-	"log"
-	"github.com/taroooth/go-microservices-example/config"
 	"fmt"
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 var db *gorm.DB
-
 
 type Book struct {
 	Id       uint64 `json:"id,omitempty"`
@@ -22,16 +23,21 @@ func GetAllBooks(books *[]Book) {
 }
 
 func init() {
-	var err error
+	if err := godotenv.Load(".env"); err != nil {
+		fmt.Printf("Failed to load env file: %v", err)
+		log.Fatalln(err)
+	}
+
 	dbConnectInfo := fmt.Sprintf(
 		`%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local`,
-		config.Config.DbUserName,
-		config.Config.DbUserPassword,
-		config.Config.DbHost,
-		config.Config.DbPort,
-		config.Config.DbName,
+		os.Getenv("DB_USER_NAME"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_NAME"),
 	)
 
+	var err error
 	db, err = gorm.Open(mysql.Open(dbConnectInfo), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
