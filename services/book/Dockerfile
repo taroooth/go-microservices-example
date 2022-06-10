@@ -1,6 +1,6 @@
 FROM golang:1.17.5-bullseye AS builder
 
-WORKDIR /go/src/github.com/taroooth/order
+WORKDIR /go/src/github.com/taroooth/go-microservices-example
 
 COPY go.mod go.mod
 COPY go.sum go.sum

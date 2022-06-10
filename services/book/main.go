@@ -9,8 +9,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	g "github.com/taroooth/order/services/book/grpc"
-	"github.com/taroooth/order/services/book/proto"
+	g "github.com/taroooth/go-microservices-example/services/book/grpc"
+	"github.com/taroooth/go-microservices-example/services/book/proto"
 )
 
 func main() {

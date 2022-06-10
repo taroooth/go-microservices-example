@@ -2,7 +2,7 @@ package model
 
 import (
 	"log"
-	"github.com/taroooth/order/config"
+	"github.com/taroooth/go-microservices-example/config"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

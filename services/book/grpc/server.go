@@ -3,9 +3,9 @@ package grpc
 import (
 	"context"
 
-	"github.com/taroooth/order/services/book/model"
+	"github.com/taroooth/go-microservices-example/services/book/model"
 
-	"github.com/taroooth/order/services/book/proto"
+	"github.com/taroooth/go-microservices-example/services/book/proto"
 )
 
 var _ proto.BookServiceServer = (*server)(nil)
