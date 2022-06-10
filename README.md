@@ -3,6 +3,7 @@
 ## サーバー起動確認
 
 ```
+$ cp .env.local .env
 $ docker-compose build
 $ docker-compose up
 

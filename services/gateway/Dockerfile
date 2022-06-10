@@ -7,6 +7,6 @@ COPY go.sum go.sum
 RUN go mod download
 
 COPY . .
-RUN go build -o /usr/bin/book ./services/book
+RUN go build -o /usr/bin/gateway ./services/gateway
 
-CMD ["/usr/bin/book"]
+CMD ["/usr/bin/gateway"]

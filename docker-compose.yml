@@ -34,5 +34,18 @@ services:
       db:
         condition: service_healthy
 
+  gateway-service:
+    container_name: gateway-service
+    build:
+      context: .
+      dockerfile: ./services/gateway/Dockerfile
+    tty: true
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:8080
+    depends_on:
+      - book-service
+
 volumes:
   data:
