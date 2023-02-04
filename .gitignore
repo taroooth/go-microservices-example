@@ -1,2 +1,4 @@
 db/data
 .env
+services/book/tmp/main
+services/gateway/tmp/main
