@@ -26,6 +26,10 @@ func CreateBook(book *Book) {
 	db.Create(&book)
 }
 
+func UpdateBook(book *Book) {
+	db.Save(&book)
+}
+
 func init() {
 	if err := godotenv.Load(".env"); err != nil {
 		fmt.Printf("Failed to load env file: %v", err)

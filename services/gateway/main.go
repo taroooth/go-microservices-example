@@ -17,5 +17,6 @@ func main() {
 	router := gin.Default()
 	router.GET("/books", controller.GetBooks)
 	router.POST("/books", controller.CreateBook)
+	router.PUT("/books/:id", controller.UpdateBook)
 	router.Run()
 }
