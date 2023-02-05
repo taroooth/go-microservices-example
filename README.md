@@ -61,6 +61,8 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"author_id":1, "title":"
 # Update
 $ curl -X PUT -H "Content-Type: application/json" -d '{"author_id":2, "title":"New Title"}' localhost:8080/books/1
 
+# Delete
+$ curl -X DELETE http://localhost:8080/books/3
 ```
 
 # MySQL

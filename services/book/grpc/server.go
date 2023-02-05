@@ -73,3 +73,14 @@ func (s *server) UpdateBook(ctx context.Context, req *proto.UpdateBookRequest) (
 
 	return res, nil
 }
+
+func (s *server) DeleteBook(ctx context.Context, req *proto.DeleteBookRequest) (*proto.DeleteBookResponse, error) {
+	book := &model.Book{
+		Id:       req.Id,
+	}
+	model.DeleteBook(book)
+
+	res := &proto.DeleteBookResponse{}
+
+	return res, nil
+}
