@@ -54,3 +54,22 @@ func (s *server) CreateBook(ctx context.Context, req *proto.CreateBookRequest) (
 
 	return res, nil
 }
+
+func (s *server) UpdateBook(ctx context.Context, req *proto.UpdateBookRequest) (*proto.UpdateBookResponse, error) {
+	book := &model.Book{
+		Id:       req.Id,
+		AuthorId: req.AuthorId,
+		Title:    req.Title,
+	}
+	model.UpdateBook(book)
+
+	res := &proto.UpdateBookResponse{
+		Book: &proto.Book{
+			Id:       book.Id,
+			AuthorId: book.AuthorId,
+			Title:    book.Title,
+		},
+	}
+
+	return res, nil
+}

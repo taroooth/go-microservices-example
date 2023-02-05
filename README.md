@@ -58,6 +58,9 @@ $ curl http://localhost:8080/books
 # Create
 $ curl -X POST -H "Content-Type: application/json" -d '{"author_id":1, "title":"タイトル"}' localhost:8080/books
 
+# Update
+$ curl -X PUT -H "Content-Type: application/json" -d '{"author_id":2, "title":"New Title"}' localhost:8080/books/1
+
 ```
 
 # MySQL
