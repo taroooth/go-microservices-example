@@ -22,6 +22,10 @@ func GetAllBooks(books *[]Book) {
 	db.Find(&books)
 }
 
+func CreateBook(book *Book) {
+	db.Create(&book)
+}
+
 func init() {
 	if err := godotenv.Load(".env"); err != nil {
 		fmt.Printf("Failed to load env file: %v", err)

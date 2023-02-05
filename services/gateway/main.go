@@ -16,5 +16,6 @@ func main() {
 	}
 	router := gin.Default()
 	router.GET("/books", controller.GetBooks)
+	router.POST("/books", controller.CreateBook)
 	router.Run()
 }

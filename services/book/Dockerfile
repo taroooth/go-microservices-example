@@ -6,6 +6,8 @@ COPY go.mod go.mod
 COPY go.sum go.sum
 RUN go mod download
 
+RUN go get -u google.golang.org/grpc
+
 COPY . .
 RUN go build -o /usr/bin/book ./services/book
 

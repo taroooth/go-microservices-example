@@ -36,3 +36,21 @@ func (s *server) GetBooks(ctx context.Context, req *proto.GetBooksRequest) (*pro
 
 	return res, nil
 }
+
+func (s *server) CreateBook(ctx context.Context, req *proto.CreateBookRequest) (*proto.CreateBookResponse, error) {
+	book := &model.Book{
+		AuthorId: req.AuthorId,
+		Title:    req.Title,
+	}
+	model.CreateBook(book)
+
+	res := &proto.CreateBookResponse{
+		Book: &proto.Book{
+			Id:       book.Id,
+			AuthorId: book.AuthorId,
+			Title:    book.Title,
+		},
+	}
+
+	return res, nil
+}
