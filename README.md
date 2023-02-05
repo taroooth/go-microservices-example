@@ -23,6 +23,13 @@ $ brew install grpc
 
 ### 自動生成
 ```
+# 初回のみ
+$ brew install protobuf
+$ go get -u google.golang.org/grpc
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+
+# 2回目以降
 $ protoc --go_out=. --go-grpc_out=require_unimplemented_servers=false:. ./services/book/proto/book.proto
 ```
 
@@ -45,7 +52,12 @@ GetBooks
 
 $ go mod tidy
 
+# Get
 $ curl http://localhost:8080/books
+
+# Create
+$ curl -X POST -H "Content-Type: application/json" -d '{"author_id":1, "title":"タイトル"}' localhost:8080/books
+
 ```
 
 # MySQL

@@ -6,6 +6,7 @@ option go_package = "./services/book/proto";
 
 service BookService {
   rpc GetBooks (GetBooksRequest) returns (GetBooksResponse) {}
+  rpc CreateBook (CreateBookRequest) returns (CreateBookResponse) {}
 }
 
 message GetBooksRequest {}
@@ -18,4 +19,13 @@ message Book {
   uint64 id = 1;
   uint64 author_id = 2;
   string title = 3;
+}
+
+message CreateBookRequest {
+  uint64 author_id = 1;
+  string title = 2;
+}
+
+message CreateBookResponse {
+  Book book = 1;
 }
