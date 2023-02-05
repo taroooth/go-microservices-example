@@ -30,6 +30,10 @@ func UpdateBook(book *Book) {
 	db.Save(&book)
 }
 
+func DeleteBook(book *Book) {
+	db.Delete(&book)
+}
+
 func init() {
 	if err := godotenv.Load(".env"); err != nil {
 		fmt.Printf("Failed to load env file: %v", err)

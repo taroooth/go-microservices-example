@@ -136,3 +136,45 @@ func UpdateBook(c *gin.Context) {
 		"message": "Book updated successfully.",
 	})
 }
+
+func DeleteBook(c *gin.Context) {
+	address := fmt.Sprintf("%v:%v", os.Getenv("BOOK_SERVICE_HOST"), os.Getenv("BOOK_SERVICE_PORT"))
+	conn, err := grpc.Dial(
+		address,
+		grpc.WithInsecure(),
+		grpc.WithBlock(),
+	)
+	if err != nil {
+		log.Fatal("Connection failed.")
+		return
+	}
+	defer conn.Close()
+
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		time.Second,
+	)
+	defer cancel()
+
+	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
+
+	if err != nil {
+		log.Fatal("Request failed.")
+		return
+	}
+
+	client := proto.NewBookServiceClient(conn)
+	deleteBookRequest := proto.DeleteBookRequest{
+		Id: id,
+	}
+
+	_, err = client.DeleteBook(ctx, &deleteBookRequest)
+	if err != nil {
+		log.Fatal("Request failed.")
+		return
+	}
+
+	c.JSONP(http.StatusNoContent, gin.H{
+		"message": "Book deleted successfully.",
+	})
+}
