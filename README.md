@@ -57,3 +57,9 @@ $ docker exec -it db /bin/sh
 
 > use book_app;
 ```
+
+# リビルド
+
+```
+$ docker-compose up --build -d
+```
